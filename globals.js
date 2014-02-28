@@ -9,9 +9,8 @@ x = 1;
 this.x;    // => 1 
 this['x']; // => 1
 
-// In browsers there's another reference calle 'window' whic point to the global object itself 
+// In browsers there's another reference called 'window' which points to the global object itself 
 this === window; // => true
 window.y;        // => 2
 window['y'];     // => 2
-
 
