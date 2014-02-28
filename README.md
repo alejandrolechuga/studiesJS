@@ -1,2 +1,3 @@
 StudiesJS
 ================
+JavaScript Notes
