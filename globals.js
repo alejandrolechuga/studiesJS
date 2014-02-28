@@ -27,7 +27,7 @@ function secretkey() {
 secretkey(); // => e99a18c428cb38d5f260853678922e03
 password;    // => "abc123"
 
-// Chained Assignments create implied globals 
+// Chained Assignments in the declaration create implied globals 
 function fn() {
   var x = y = z = 0; // *Antipattern*
 }
@@ -38,6 +38,12 @@ fn();
 z;    // => 0
 y;    // => 0
 x;    // => "Error: x is not defined"
+
+// Is valid after the declaration 
+function fn() {
+  var x, y, z;
+  x = y = z = 0; // Valid pattern
+}
 
 // implied globals can be deleted , global declared variables can't 
 var x = 1; 
