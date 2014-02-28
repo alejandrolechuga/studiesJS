@@ -1,4 +1,5 @@
-// Common way to declare a group of variables  
+/// Single var pattern 
+  // Common way to declare a group of variables  
 function fn() {
   var start = 0;
   var finish = 1;
@@ -7,7 +8,7 @@ function fn() {
   var result; 
 }
 
-// Single ' var ' Pattern 
+  // Single ' var ' Pattern*
 function fn() {
   var start,
       finish = 1,
@@ -16,7 +17,7 @@ function fn() {
       result; 
 }
 
-// Some programmers arrange it like this 
+  // Some programmers arrange it like this 
 function fn() {
   var start
   , finish = 1
@@ -24,3 +25,5 @@ function fn() {
   , increase = 2.5
   , result; 
 }
+
+/// Hoisting
