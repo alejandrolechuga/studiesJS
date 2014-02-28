@@ -27,3 +27,12 @@
   }
 
 /// Hoisting
+  // is when you declare multiple variables in different parts of your function and all behave as they were declared
+  // at the top of the function 
+  x = "Global Space"; // => *Antipattern*
+  function fn() {
+    x; // => undefined
+    var x = "Local Space";
+    x; // => "Local Space"
+  }
+
