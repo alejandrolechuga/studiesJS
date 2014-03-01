@@ -34,7 +34,7 @@
   var book =  Object.create(null);
   defineProp(book, "title", "The Good Parts");
   defineProp(book, "author", "Douglas Crockford");
-  defineProp(book, "press", "O'reilly");
+  defineProp(book, "publisher", "O'reilly");
   book; // => Object {title: "The Good Parts", author: "Douglas Crockford", press: "O'reilly"} 
 
   // Object.defineProperties
@@ -49,3 +49,19 @@
       writable: false
     }
   });
+
+  // Basic Constructor
+  function Book( title, author, publisher) {
+    this.title = title;
+    this.author = author;
+    this.publisher = publisher;
+    // Each time we create an object type Book the toString method gets redifined
+    this.toString = function () {
+      return this.title + ", " + this.author + ", " + this.publisher;
+    }
+  }
+
+  var theGoodParts = new Book( "TheGoodParts", "Douglas Crockford", "O'reilly");
+  theGoodParts.toString(); // => "TheGoodParts, Douglas Crockford, O'reilly"
+  var jsPatterns = new Book ("JavaScript Patterns", "Stoyan Stefanov", "O'reily");
+  jsPatterns.toStrings(); // => "JavaScript Patterns, Stoyan Stefanov, O'reily"
