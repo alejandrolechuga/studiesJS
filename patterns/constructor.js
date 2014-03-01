@@ -10,8 +10,8 @@
   obj["key"] = "value";
   obj["key"]            // => "value"
 
-  //ES5 Approaches
-  //Object.defineProperty
+// ES5 Approaches
+  // Object.defineProperty
   Object.defineProperty(obj, "key", {
     value: "value",
     writable: true,
@@ -19,7 +19,7 @@
     configurable: true
   });
 
-  //defineProperty Short-hand 
+  // defineProperty Short-hand 
   var defineProp = function (obj, key, value) {
     var config = {
       value: value,
@@ -30,4 +30,22 @@
     Object.defineProperty(obj, key, config);
   };
 
-  
+  // Populating 
+  var book =  Object.create(null);
+  defineProp(book, "title", "The Good Parts");
+  defineProp(book, "author", "Douglas Crockford");
+  defineProp(book, "press", "O'reilly");
+  book; // => Object {title: "The Good Parts", author: "Douglas Crockford", press: "O'reilly"} 
+
+  // Object.defineProperties
+  var obj = {};
+  Object.defineProperties(obj, {
+    "name": {
+      value: "Alejandro Amador",
+      writable: true
+    },
+    "age": {
+      value: 28,
+      writable: false
+    }
+  });
