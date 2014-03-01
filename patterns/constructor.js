@@ -51,15 +51,31 @@
   });
 
   // Basic Constructor
-  function Book( title, author, publisher) {
+  function Book(title, author, publisher) {
     this.title = title;
     this.author = author;
     this.publisher = publisher;
-    // Each time we create an object type Book the toString method gets redifined
+    // Each time we create an object type Book the toString method gets redifined for each new instance
     this.toString = function () {
       return this.title + ", " + this.author + ", " + this.publisher;
     }
   }
+
+  var theGoodParts = new Book( "TheGoodParts", "Douglas Crockford", "O'reilly");
+  theGoodParts.toString(); // => "TheGoodParts, Douglas Crockford, O'reilly"
+  var jsPatterns = new Book ("JavaScript Patterns", "Stoyan Stefanov", "O'reily");
+  jsPatterns.toStrings(); // => "JavaScript Patterns, Stoyan Stefanov, O'reily"
+
+  // Constructor with Prototype 
+  function Book(title, author, publisher) {
+    this.title = title;
+    this.author = author;
+    this.publisher = publisher;
+  }
+  // This method is shared among all instances 
+  Book.prototype.toString = function () {
+    return this.title + ", " + this.author + ", " + this.publisher;
+  };
 
   var theGoodParts = new Book( "TheGoodParts", "Douglas Crockford", "O'reilly");
   theGoodParts.toString(); // => "TheGoodParts, Douglas Crockford, O'reilly"
