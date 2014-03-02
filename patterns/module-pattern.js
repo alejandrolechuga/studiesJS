@@ -172,8 +172,11 @@
     function publicMethod(){
       return privateMethod();
     }
+    // The returned object exposes just references
     return {
       publicMethod: publicMethod
     }
   }());
   module.publicMethod(); // => "abc123"
+
+
