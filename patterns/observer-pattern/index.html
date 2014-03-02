@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <input id="multiplier" type="number">
+    <table> 
+      <thead>
+        <tr>
+          <th>Multiplicand</th>
+          <th>Multiplier</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody id="table">
+      </tbody>
+    </table>
+    <script src="observer-pattern.js"></script>
+    <script>
+      // Subject
+      var multiplierinput = document.getElementById("multiplier");
+      extend(new Subject(), multiplierinput);
+
+      // Notifies to observers
+      multiplierinput.onchange = function () {
+        console.log("onchange");
+        multiplierinput.notify(multiplierinput.value);
+      }
+
+      // Observers
+      var tbody = document.getElementById("table");
+      for (var i = 0; i < 10; i++) {
+        var tr = document.createElement("tr");
+        var multiplicand = document.createElement("td");
+        // Multiplier Observer
+        var multiplier = document.createElement("td");
+        extend(new Observer(), multiplier);
+        (function (multiplier){
+          multiplier.update = function (value) {
+            multiplier.innerHTML = value;
+          };
+        }(multiplier));
+        multiplierinput.addObserver(multiplier);
+        // Result Observer
+        var result = document.createElement("td");
+        extend(new Observer(), result);
+        (function(result, i) {
+          result.update = function (value) {
+            result.innerHTML = i * parseInt(value);
+          };
+        }(result, i));
+        multiplierinput.addObserver(result);
+
+        multiplicand.innerHTML = i;
+        multiplier.innerHTML = "0";
+        result.innerHTML = "0";
+        tr.appendChild(multiplicand);
+        tr.appendChild(multiplier);
+        tr.appendChild(result);
+        tbody.appendChild(tr);
+      }
+    </script>
+  </body>
+</html>
