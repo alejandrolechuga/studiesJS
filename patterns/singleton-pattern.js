@@ -35,6 +35,7 @@
   var singleton = (function(){
     var instance,
       _static;
+    // Constructor
     function Module = function(options) {
       this.options = options || {};
       this.x = options.x;
