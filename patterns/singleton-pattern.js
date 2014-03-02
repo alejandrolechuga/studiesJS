@@ -30,3 +30,23 @@
   obj.publicMethod()        // => 0.5304695672821254 
   var secondObj = singleton.getInstance();
   secondObj.publicMethod(); // => 0.5304695672821254 
+  
+  // Singleton with constructor 
+  var singleton = (function(){
+    var instance,
+      _static;
+    function Module = function(options) {
+      this.options = options || {};
+      this.x = options.x;
+      this.y = options.y;
+    }
+    _static = {
+      getInstance: function (options) {
+        if (!instance) {
+          instance = new Module(options);
+        }
+        return instance;
+      }
+    };
+    return _static;
+  }());
