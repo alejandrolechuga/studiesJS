@@ -132,4 +132,48 @@
       }
     }
   }());
-  
+/// JQuery 
+  // JQuery approach binds up the jQuery.ready with the module method init 
+  // function wrapper
+  function define(module){
+    $(function () {
+      if (module.init) {
+        module.init();
+      }
+    });
+    return module;
+  }
+
+  var module = define((function(){
+    var secretKey = "abc123";
+    function privateMethod(){
+      return secretKey;
+    }
+    return {
+      publicMethod: function() {
+        return privateMethod();
+      },
+      init: function () {
+        // called on JQuery.ready event 
+      }
+    }
+  }());
+
+/// The Revealing Module Pattern 
+  //  Slightly improved version by Christian Heilmann 
+  // This pattern keeps all the defintions in the function scope 
+  // the function returns an anonymous object with pointers to the private properties
+
+  var module = (function () {
+    var secretKey = "abc123";
+    function privateMethod() {
+      return secretKey;
+    }
+    function publicMethod(){
+      return privateMethod();
+    }
+    return {
+      publicMethod: publicMethod
+    }
+  }());
+  module.publicMethod(); // => "abc123"
