@@ -7,6 +7,7 @@
     <table> 
       <thead>
         <tr>
+          <th>Observe ? </th>
           <th>Multiplicand</th>
           <th>Multiplier</th>
           <th>Result</th>
@@ -31,6 +32,10 @@
       var tbody = document.getElementById("table");
       for (var i = 0; i < 10; i++) {
         var tr = document.createElement("tr");
+        var chkboxtd = document.createElement("td");
+        var chkbox = document.createElement("input");
+        chkbox.type = "checkbox";
+
         var multiplicand = document.createElement("td");
         // Multiplier Observer
         var multiplier = document.createElement("td");
@@ -40,7 +45,7 @@
             multiplier.innerHTML = value;
           };
         }(multiplier));
-        multiplierinput.addObserver(multiplier);
+        
         // Result Observer
         var result = document.createElement("td");
         extend(new Observer(), result);
@@ -49,11 +54,25 @@
             result.innerHTML = i * parseInt(value);
           };
         }(result, i));
-        multiplierinput.addObserver(result);
+
+        (function(multiplier, result, chkbox){
+          chkbox.onchange = function () {
+            if (chkbox.checked) {
+              multiplierinput.addObserver(multiplier);
+              multiplierinput.addObserver(result);
+            } else {
+              multiplierinput.removeObserver(multiplier);
+              multiplierinput.removeObserver(result);
+            }
+          }
+        }(multiplier, result, chkbox));
 
         multiplicand.innerHTML = i;
         multiplier.innerHTML = "0";
         result.innerHTML = "0";
+
+        chkboxtd.appendChild(chkbox);
+        tr.appendChild(chkboxtd);
         tr.appendChild(multiplicand);
         tr.appendChild(multiplier);
         tr.appendChild(result);
