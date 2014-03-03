@@ -2,4 +2,5 @@ StudiesJS
 ================
 JavaScript Notes
 
-I'll add the references here later ok.
+references: 
+http://addyosmani.com/resources/essentialjsdesignpatterns/book/
