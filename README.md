@@ -2,7 +2,7 @@ StudiesJS
 ================
 JavaScript Notes
 
-<strong>references:</strong> 
+<strong>References:</strong> 
 <br>
 Learning Design Patterns
 <br>
