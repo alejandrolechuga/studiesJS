@@ -38,21 +38,23 @@
   xhr.addEventListener("readystatechange", function (e){
     var readystate = xhr.readyState;
     switch (readystate) {
-      case 0:
-        console.log(" UNSET open() has not been called yet");
-        break;
-      case 1:
-        console.log(" OPENED send() has not been called yet");
-        break;
-      case 2: 
-        console.log(" HEADERS_RECEIVED send has been called, and headers and status are available");
-        break;
-      case 3: 
-        console.log(" LOADING downloading responseText" );
-        break;
-      case 4: 
-        console.log(" DONE The operation is complete");
-        break;
+    case 0:
+      console.log(" UNSET open() has not been called yet");
+      break;
+    case 1:
+      console.log(" OPENED send() has not been called yet");
+      break;
+    case 2: 
+      console.log(" HEADERS_RECEIVED send has been called, and headers and status are available");
+      break;
+    case 3: 
+      console.log(" LOADING downloading responseText" );
+      break;
+    case 4: 
+      console.log(" DONE The operation is complete");
+      break;
+    default:
+      console.log("UNKNOWN");
     }
   });
 
