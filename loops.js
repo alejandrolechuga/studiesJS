@@ -35,3 +35,38 @@
   while (i--) {
     // Traverse array
   }
+
+/// for-in loops (also called enumeration)
+  // is recommended to check the object propertie while traversing the it 
+  for (var i in obj) {
+    if (obj.hashOwnProperty(i)) { // filter
+      i;        //  key
+      obj[i];   //  value 
+    }
+  }
+
+  // Another way to call the hashOwnProperty method
+  for (var i in obj) {
+    if (Object.prototype.hashOwnProperty.call(obj, i)) {
+      i;        //  key
+      obj[i];   //  value 
+    }
+  }
+
+  // Using the cache technique 
+  var i,
+    ownProp = Object.prototype.hashOwnProperty;
+  for (i in obj) {
+    if (ownProp.call(obj, i)) {
+      i;        //  key
+      obj[i];   //  value 
+    }
+  }
+
+  // Another technique (Invalid for JSLint)
+  var i, 
+    ownProp = Object.prototype.hashOwnProperty;
+  for (i in obj) if (ownProp.call(obj, i)) { // filter
+    i;        //  key
+    obj[i];   //  value 
+  }
