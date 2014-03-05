@@ -1,4 +1,4 @@
-/// Publish/Subscribe Pattern
+/// Publish/Subscribe Pattern (Event Aggregation)
   // Similar to Observer Pattern , this pattern lets the observers to subscribe to a specific topic
   // and lets the observer implement its own notification handler 
 
