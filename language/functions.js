@@ -19,3 +19,13 @@
   // Calling with apply
   // The first parameter is null so this points to the global object
   fn.apply(null, [1, 2]); // => 3
+  
+  // Using an object
+  var master = {
+    skill: function () {
+      return this;
+    }
+  };
+
+  master.skill();  // => master{}
+  skill.apply(master); // => master{}
